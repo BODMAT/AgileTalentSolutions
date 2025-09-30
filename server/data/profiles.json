@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "name": "Bohdan",
+        "position": "Frontend Developer",
+        "skills": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS"
+        ],
+        "description": "Frontend developer with experience in building responsive web apps using React and Tailwind.",
+        "rating": 5,
+        "imgURL": "https://example.com/images/bohdan.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Anna",
+        "position": "Backend Developer",
+        "skills": [
+            "Node.js",
+            "Express",
+            "MongoDB"
+        ],
+        "description": "Backend developer specializing in RESTful APIs and database management.",
+        "rating": 4.2,
+        "imgURL": "https://example.com/images/anna.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Ivan",
+        "position": "Fullstack Developer",
+        "skills": [
+            "React",
+            "Node.js",
+            "Express",
+            "PostgreSQL"
+        ],
+        "description": "Fullstack developer with expertise in both frontend and backend technologies.",
+        "rating": 4.8,
+        "imgURL": "https://example.com/images/ivan.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Olena",
+        "position": "Data Scientist",
+        "skills": [
+            "Python",
+            "Pandas",
+            "Machine Learning"
+        ],
+        "description": "Data scientist focused on data analysis, modeling, and machine learning solutions.",
+        "rating": 4.7,
+        "imgURL": "https://example.com/images/olena.jpg"
+    }
+]
