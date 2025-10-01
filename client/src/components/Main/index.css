@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+
+@layer base {
+    .transitioned {
+        @apply transition-all duration-500 ease-[cubic-bezier(0.075,0.82,0.165,1)];
+    };
+
+    :root{
+        --text-color: #1f2937; 
+        --bg-color: #ffffff;
+        
+        --header-bg: #7ba3da;
+        --header-text: #ffffff;
+        
+        --accent-blue: #3b82f6; 
+        --accent-blue-hover: #2563eb;
+        
+        --accent-indigo: #6366f1;
+        --accent-indigo-hover: #4f46e5; 
+
+        --bg-soft: #f9fafb;
+        --border-color: #e5e7eb;
+    }
+
+    body {
+        font-family: var(--font-roboto);
+        @apply bg-[var(--bg-color)] text-[var(--text-color)] text-[20px] max-md:text-[18px] max-sm:text-[16px];
+    }
+
+    .monsetatt {
+        font-family: var(--font-montserrat);
+    }
+
+    .roboto {
+         font-family: var(--font-roboto);
+    }
+
+    .wrapper {
+        @apply flex flex-col min-h-screen;
+    }
+
+    .myContainer {
+        @apply max-w-[1200px] mx-auto px-5;
+    }
+    
+}
