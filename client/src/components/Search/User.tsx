@@ -4,7 +4,12 @@ import { RatingStars } from "../Reusable/RatingStars";
 
 export function User({ id, name, city, age, skills, description, rating, imgURL }: Profile) {
     return (
-        <Link to={`/profile/${id}`} className="bg-[var(--bg-gray)] rounded-lg p-5 border-1 border-[#8a8c8f] flex flex-col gap-3 transitioned hover:scale-105 hover:shadow-lg">
+        <Link
+            to={`/profile/${id}`}
+            className="bg-[var(--bg-gray)] rounded-lg p-5 border border-[#8a8c8f] flex flex-col gap-3 transitioned hover:scale-105 hover:shadow-lg
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)]"
+        >
+
             <div className="flex gap-4 items-center">
                 {imgURL && (
                     <img src={imgURL} alt="profile" className="w-13 h-13 rounded-full" />
