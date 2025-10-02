@@ -13,28 +13,44 @@ interface UseTagCloudProps {
     characterHeight?: number;
 }
 
-export function useTagCloud({
-    skills,
-}: UseTagCloudProps) {
+export function useTagCloud({ skills }: UseTagCloudProps) {
     const [positions, setPositions] = useState<SkillPos[]>([]);
     const [sizes, setSizes] = useState<{ width: number; height: number }[]>([]);
     const [colors, setColors] = useState<string[]>([]);
     const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
-    const [container, setContainer] = useState<{ width: number; height: number }>(() => {
-        const w = window.innerWidth;
-        if (w < 768) return { width: w - 30, height: 200 };
-        if (w < 1024) return { width: w - 50, height: 300 };
-        return { width: 500, height: 500 };
+    const [initialized, setInitialized] = useState(false);
+
+    const getDeviceType = (w: number) => {
+        if (w < 768) return "mobile";
+        if (w < 1024) return "tablet";
+        return "desktop";
+    };
+
+    const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">(
+        () => getDeviceType(window.innerWidth)
+    );
+
+    const [container, setContainer] = useState(() => {
+        switch (deviceType) {
+            case "mobile":
+                return { width: 300, height: 200 };
+            case "tablet":
+                return { width: 450, height: 300 };
+            case "desktop":
+                return { width: 500, height: 500 };
+        }
     });
 
     const [character, setCharacter] = useState(() => {
-        const w = window.innerWidth;
-        if (w < 768) return { width: 9, height: 20 };
-        if (w < 1024) return { width: 12, height: 30 };
-        return { width: 15, height: 40 };
+        switch (deviceType) {
+            case "mobile":
+                return { width: 6, height: 15 };
+            case "tablet":
+                return { width: 10, height: 25 };
+            case "desktop":
+                return { width: 15, height: 40 };
+        }
     });
-    const [initialized, setInitialized] = useState(false);
-
 
     const generatePositions = () => {
         const placed: Rect[] = [];
@@ -65,30 +81,47 @@ export function useTagCloud({
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
-    // resize
+    // resize 
     useEffect(() => {
+        let timer: number;
         const handleResize = () => {
-            const w = window.innerWidth;
-            if (w < 768) {
-                setContainer({ width: w - 30, height: 200 });
-                setCharacter({ width: 9, height: 20 });
-            } else if (w < 1024) {
-                setContainer({ width: w - 50, height: 300 });
-                setCharacter({ width: 12, height: 30 });
-            } else {
-                setContainer({ width: 500, height: 500 });
-                setCharacter({ width: 15, height: 40 });
-            }
+            clearTimeout(timer);
+            timer = window.setTimeout(() => {
+                const newType = getDeviceType(window.innerWidth);
+                if (newType !== deviceType) {
+                    setDeviceType(newType);
+                    switch (newType) {
+                        case "mobile":
+                            setContainer({ width: 300, height: 200 });
+                            setCharacter({ width: 6, height: 15 });
+                            break;
+                        case "tablet":
+                            setContainer({ width: 450, height: 300 });
+                            setCharacter({ width: 10, height: 25 });
+                            break;
+                        case "desktop":
+                            setContainer({ width: 500, height: 500 });
+                            setCharacter({ width: 15, height: 40 });
+                            break;
+                    }
+                }
+            }, 200); // debounce
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [deviceType]);
 
-
-    // generate positions on mount
     useEffect(() => {
         generatePositions();
     }, [container]);
 
-    return { positions, sizes, colors, cursor, initialized, containerWidth: container.width, containerHeight: container.height };
+    return {
+        positions,
+        sizes,
+        colors,
+        cursor,
+        initialized,
+        containerWidth: container.width,
+        containerHeight: container.height,
+    };
 }

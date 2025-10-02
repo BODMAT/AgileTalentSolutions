@@ -35,13 +35,17 @@ export const getProfilesWithSearch = (req: Request, res: Response) => {
 
         const results = parsedProfiles
             .map(profile => {
-                const score = profile.skills.filter(
-                    skill => skills.some((s: string) => s.toLowerCase() === skill.toLowerCase())
-                ).length;
+                const matchingSkills = profile.skills.filter(skill =>
+                    skills.some((s: string) => s.toLowerCase() === skill.toLowerCase())
+                );
+                const score = Math.min(matchingSkills.length, 5); // max 5
                 return { ...profile, score };
             })
             .filter(profile => profile.score > 0)
-            .sort((a, b) => b.score - a.score || (b.rating ?? 0) - (a.rating ?? 0));
+            .sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score; //desc
+                return (b.rating ?? 0) - (a.rating ?? 0); //rating desc
+            });
 
         res.json(results);
     } catch (err) {

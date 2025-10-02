@@ -3,7 +3,6 @@ import { create } from "zustand";
 interface BurgerMenuState {
     isBurgerOpen: boolean;
     isMobile: boolean;
-
     toggleBurger: () => void;
     closeBurger: () => void;
     setIsMobile: (value: boolean) => void;
@@ -18,8 +17,8 @@ export const useBurgerMenu = create<BurgerMenuState>((set) => ({
         ),
     closeBurger: () => set({ isBurgerOpen: false }),
     setIsMobile: (value) =>
-        set(() => ({
+        set((state) => ({
             isMobile: value,
-            isBurgerOpen: value ? false : false,
+            isBurgerOpen: value ? state.isBurgerOpen : false,
         })),
 }));

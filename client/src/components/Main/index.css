@@ -10,7 +10,7 @@
     :root{
         --text-color: #1f2937; 
         --bg-color: #c8c8c89a;
-        --bg-gray: #f3f4f6;
+        --bg-gray: #f3f4f6d0;
         
         --header-bg: #7ba3da;
         --header-text: #ffffff;

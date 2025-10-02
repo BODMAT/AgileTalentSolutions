@@ -34,8 +34,8 @@ export function Menu() {
 
             <li>
                 <button
-                    onClick={() => { handleRedirect("/profile") }}
-                    className={`relative fontOswald font-semibold uppercase cursor-pointer transitioned after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[var(--border-color)] after:transition-all after:duration-200 hover:after:w-full ${location.pathname === "/profile" ? "after:w-full" : ""}`}
+                    onClick={() => { handleRedirect("/profile/1") }}
+                    className={`relative fontOswald font-semibold uppercase cursor-pointer transitioned after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[var(--border-color)] after:transition-all after:duration-200 hover:after:w-full ${location.pathname.startsWith("/profile/") ? "after:w-full" : ""}`}
                 >
                     Profile
                 </button>

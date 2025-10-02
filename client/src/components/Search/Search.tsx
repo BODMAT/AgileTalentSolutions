@@ -3,17 +3,23 @@ import { User } from "./User";
 import type { Profile } from "../../types/profile";
 import { getProfilesWithSearch } from "../../api/profiles";
 import { SearchForm } from "./SearchForm";
+import { CustomMessage, NoData } from "../Reusable/Helpers";
 
 export function Search() {
     const [options, setOptions] = useState<string[]>([]);
     const [users, setUsers] = useState<Profile[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getProfilesWithSearch(options).then((data) => setUsers(data));
+        setLoading(true);
+        getProfilesWithSearch(options).then((data) => setUsers(data)).finally(() => setLoading(false));;
     }, [options]);
 
+    if (loading) return <CustomMessage message="Loading..." />;
+    if (!users) return <NoData />;
+
     return (
-        <section className="myContainer mt-10">
+        <section className="myContainer my-10">
             <div className="flex flex-col items-center gap-10">
                 <h2 className="font-bold text-center text-5xl montseratt">Search Profiles</h2>
                 <SearchForm options={options} setOptions={setOptions} />

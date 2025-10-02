@@ -30,7 +30,7 @@ export function TagCloudChaotic() {
                 return (
                     <motion.div
                         key={skills[i]}
-                        className="absolute px-3 py-1 rounded-2xl text-[var(--text-color)] font-medium max-[1024px]:text-[10px]"
+                        className="absolute px-3 py-1 text-[var(--text-color)] rounded-2xl font-medium max-[1024px]:text-[10px]"
                         style={{
                             left: pos.x,
                             top: pos.y,
