@@ -17,7 +17,7 @@ export const getSafePosition = (
     containerWidth: number,
     containerHeight: number,
     placed: Rect[],
-    maxTries = 100
+    maxTries = 1000
 ) => {
     let x = 0, y = 0, tries = 0, fits = false;
 
@@ -33,3 +33,8 @@ export const getSafePosition = (
 };
 
 export const randomOffset = () => (Math.random() * 40 - 20);
+
+export function getRandomSkills(arr: string[], count: number): string[] {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}

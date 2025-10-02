@@ -11,7 +11,7 @@ export function Home() {
                     <h1 className="font-bold text-7xl montseratt max-lg:text-center max-lg:mt-6 max-lg:text-5xl lg:max-w-120">Welcome to the Platform</h1>
                     <BthSearch text="Go to search" handler={() => { navigate("/search") }} />
                 </div>
-                <div className="flex-2/5 mt-10 max-lg:flex-1">
+                <div className="flex-2/5 mt-10 max-lg:flex-1 max-lg:pr-20vw ">
                     <TagCloudChaotic />
                 </div>
             </div>

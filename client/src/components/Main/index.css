@@ -9,7 +9,8 @@
 
     :root{
         --text-color: #1f2937; 
-        --bg-color: #ffffff;
+        --bg-color: #c8c8c89a;
+        --bg-gray: #f3f4f6;
         
         --header-bg: #7ba3da;
         --header-text: #ffffff;
@@ -42,7 +43,7 @@
     }
 
     .myContainer {
-        @apply max-w-[1200px] mx-auto px-5;
+        @apply max-w-[1200px] mx-auto px-[15px];
     }
     
 }

@@ -3,7 +3,7 @@ import cors from 'cors';
 import profilesRoutes from './routes/profiles.ts';
 
 const app = express();
-const PORT = 5000;
+const PORT = 4000;
 
 app.use(cors());
 app.use(express.json());

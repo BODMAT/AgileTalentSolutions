@@ -15,18 +15,26 @@ interface UseTagCloudProps {
 
 export function useTagCloud({
     skills,
-    characterWidth = 15,
-    characterHeight = 40,
 }: UseTagCloudProps) {
     const [positions, setPositions] = useState<SkillPos[]>([]);
     const [sizes, setSizes] = useState<{ width: number; height: number }[]>([]);
     const [colors, setColors] = useState<string[]>([]);
     const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
-    const [container, setContainer] = useState<{ width: number; height: number }>({
-        width: window.innerWidth < 1024 ? window.innerWidth - 30 : 500,
-        height: window.innerWidth < 1024 ? 400 : 500,
+    const [container, setContainer] = useState<{ width: number; height: number }>(() => {
+        const w = window.innerWidth;
+        if (w < 768) return { width: w - 30, height: 200 };
+        if (w < 1024) return { width: w - 50, height: 300 };
+        return { width: 500, height: 500 };
+    });
+
+    const [character, setCharacter] = useState(() => {
+        const w = window.innerWidth;
+        if (w < 768) return { width: 9, height: 20 };
+        if (w < 1024) return { width: 12, height: 30 };
+        return { width: 15, height: 40 };
     });
     const [initialized, setInitialized] = useState(false);
+
 
     const generatePositions = () => {
         const placed: Rect[] = [];
@@ -35,8 +43,8 @@ export function useTagCloud({
         const newColors: string[] = [];
 
         skills.forEach((skill) => {
-            const width = skill.length * characterWidth + 20;
-            const height = characterHeight;
+            const width = skill.length * character.width + 20;
+            const height = character.height;
             const pos = getSafePosition(width, height, container.width, container.height, placed);
             placed.push({ x: pos.x, y: pos.y, width, height });
             newPositions.push(pos);
@@ -60,14 +68,22 @@ export function useTagCloud({
     // resize
     useEffect(() => {
         const handleResize = () => {
-            setContainer({
-                width: window.innerWidth < 1024 ? window.innerWidth - 30 : 500,
-                height: window.innerWidth < 1024 ? 400 : 500,
-            });
+            const w = window.innerWidth;
+            if (w < 768) {
+                setContainer({ width: w - 30, height: 200 });
+                setCharacter({ width: 9, height: 20 });
+            } else if (w < 1024) {
+                setContainer({ width: w - 50, height: 300 });
+                setCharacter({ width: 12, height: 30 });
+            } else {
+                setContainer({ width: 500, height: 500 });
+                setCharacter({ width: 15, height: 40 });
+            }
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
 
     // generate positions on mount
     useEffect(() => {

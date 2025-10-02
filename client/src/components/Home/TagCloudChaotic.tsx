@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { useTagCloud } from "../../hooks/useTagCloud";
-import { randomOffset } from "../../utils/functions";
-
-const skills = ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Zustand", "PostgreSQL", "HTML", "CSS"];
+import { getRandomSkills, randomOffset } from "../../utils/functions";
+import { allSkills } from "../../data/skills";
+import { useMemo } from "react";
 
 export function TagCloudChaotic() {
+    const skills = useMemo(() => getRandomSkills(allSkills, 10), []);
     const { positions, sizes, colors, cursor, initialized, containerWidth, containerHeight } = useTagCloud({ skills });
 
     const containerLeft = (window.innerWidth - containerWidth) / 2;
@@ -29,7 +30,7 @@ export function TagCloudChaotic() {
                 return (
                     <motion.div
                         key={skills[i]}
-                        className="absolute px-3 py-1 rounded-2xl text-[var(--text-color)] font-medium"
+                        className="absolute px-3 py-1 rounded-2xl text-[var(--text-color)] font-medium max-[1024px]:text-[10px]"
                         style={{
                             left: pos.x,
                             top: pos.y,

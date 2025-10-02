@@ -2,33 +2,34 @@
     {
         "id": 1,
         "name": "Bohdan",
-        "position": "Frontend Developer",
+        "city": "Cherkasy",
+        "age": 19,
         "skills": [
             "React",
             "TypeScript",
             "Tailwind CSS"
         ],
         "description": "Frontend developer with experience in building responsive web apps using React and Tailwind.",
-        "rating": 5,
-        "imgURL": "https://example.com/images/bohdan.jpg"
+        "rating": 5
     },
     {
         "id": 2,
+        "city": "Kyiv",
+        "age": 21,
         "name": "Anna",
-        "position": "Backend Developer",
         "skills": [
             "Node.js",
             "Express",
             "MongoDB"
         ],
         "description": "Backend developer specializing in RESTful APIs and database management.",
-        "rating": 4.2,
-        "imgURL": "https://example.com/images/anna.jpg"
+        "rating": 4.2
     },
     {
         "id": 3,
         "name": "Ivan",
-        "position": "Fullstack Developer",
+        "city": "Lviv",
+        "age": 20,
         "skills": [
             "React",
             "Node.js",
@@ -36,20 +37,71 @@
             "PostgreSQL"
         ],
         "description": "Fullstack developer with expertise in both frontend and backend technologies.",
-        "rating": 4.8,
-        "imgURL": "https://example.com/images/ivan.jpg"
+        "rating": 4.8
     },
     {
         "id": 4,
+        "city": "Kyiv",
+        "age": 24,
         "name": "Olena",
-        "position": "Data Scientist",
         "skills": [
             "Python",
             "Pandas",
             "Machine Learning"
         ],
         "description": "Data scientist focused on data analysis, modeling, and machine learning solutions.",
-        "rating": 4.7,
-        "imgURL": "https://example.com/images/olena.jpg"
+        "rating": 4.7
+    },
+    {
+        "id": 5,
+        "name": "Dmytro",
+        "city": "Odesa",
+        "age": 22,
+        "skills": [
+            "Vue.js",
+            "JavaScript",
+            "CSS"
+        ],
+        "description": "Frontend developer with a focus on Vue.js and interactive UI components.",
+        "rating": 4.5
+    },
+    {
+        "id": 6,
+        "name": "Kateryna",
+        "city": "Kharkiv",
+        "age": 23,
+        "skills": [
+            "Python",
+            "Django",
+            "PostgreSQL"
+        ],
+        "description": "Backend developer building scalable web applications with Django.",
+        "rating": 4.3
+    },
+    {
+        "id": 7,
+        "name": "Mykola",
+        "city": "Lviv",
+        "age": 25,
+        "skills": [
+            "Angular",
+            "Node.js",
+            "MongoDB"
+        ],
+        "description": "Fullstack developer working on enterprise web applications.",
+        "rating": 4.6
+    },
+    {
+        "id": 8,
+        "name": "Sofia",
+        "city": "Dnipro",
+        "age": 21,
+        "skills": [
+            "SQL",
+            "Excel",
+            "Power BI"
+        ],
+        "description": "Data analyst extracting insights and building dashboards for business decisions.",
+        "rating": 4.4
     }
 ]
