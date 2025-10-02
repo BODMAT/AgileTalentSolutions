@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useBurgerMenu } from "../../hooks/useBurgerMenu";
+import { useBurgerMenu } from "../../store/useBurger";
 import { Menu } from "./Menu";
 
 export function FixedHeader() {
-    const { isBurgerOpen, toggleBurger, isMobile } = useBurgerMenu();
+    const { isBurgerOpen, toggleBurger, isMobile, setIsMobile } = useBurgerMenu();
     useEffect(() => {
         document.body.style.overflow = isBurgerOpen && isMobile ? "hidden" : "";
         document.body.style.height = isBurgerOpen && isMobile ? "100vh" : "";
@@ -16,11 +16,18 @@ export function FixedHeader() {
             }
         };
     }, [isBurgerOpen, isMobile]);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 620);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [setIsMobile]);
 
     return (
         <header className="bg-[var(--header-bg)] fixed top-0 left-0 z-10 transitioned py-2 h-[100px] w-full">
             <div className="myContainer h-full flex justify-between gap-7 items-center">
-                <a href="/agile-talent-solutions/" className="w-20 h-20">
+                <a href="/agile-talent-solutions/" className="w-20 h-20 transitioned hover:scale-105">
                     <img src="./logo.svg" alt="logo" />
                 </a>
                 {!isMobile ? (

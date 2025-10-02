@@ -14,13 +14,13 @@
         --header-bg: #7ba3da;
         --header-text: #ffffff;
         
-        --accent-blue: #3b82f6; 
+        --accent-blue: #d7e6ff; 
         --accent-blue-hover: #2563eb;
         
-        --accent-indigo: #6366f1;
+        --accent-indigo: #d3d4ff;
         --accent-indigo-hover: #4f46e5; 
 
-        --bg-soft: #f9fafb;
+        --bg-btn: #7ba3da;
         --border-color: #e5e7eb;
     }
 
@@ -29,7 +29,7 @@
         @apply bg-[var(--bg-color)] text-[var(--text-color)] text-[20px] max-md:text-[18px] max-sm:text-[16px];
     }
 
-    .monsetatt {
+    .montseratt {
         font-family: var(--font-montserrat);
     }
 
