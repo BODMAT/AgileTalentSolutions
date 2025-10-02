@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useBurgerMenu } from "../../store/useBurger";
 import { Menu } from "./Menu";
 
@@ -27,9 +28,9 @@ export function FixedHeader() {
     return (
         <header className="bg-[var(--header-bg)] fixed top-0 left-0 z-10 transitioned py-2 h-[100px] w-full">
             <div className="myContainer h-full flex justify-between gap-7 items-center">
-                <a href="/agile-talent-solutions/" className="w-20 h-20 transitioned hover:scale-105">
+                <Link to="/" className="w-20 h-20 transitioned hover:scale-105">
                     <img src="./logo.svg" alt="logo" />
-                </a>
+                </Link>
                 {!isMobile ? (
                     <div className="flex gap-10 items-center"><Menu /></div>
                 ) : (

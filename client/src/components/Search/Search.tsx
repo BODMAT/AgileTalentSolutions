@@ -16,7 +16,7 @@ export function Search() {
     }, [options]);
 
     if (loading) return <CustomMessage message="Loading..." />;
-    if (!users) return <NoData />;
+    if (!users || users.length === 0) return <NoData />;
 
     return (
         <section className="myContainer my-10">

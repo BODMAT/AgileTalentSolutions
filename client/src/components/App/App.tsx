@@ -7,7 +7,7 @@ import { Profile } from "../Profile/Profile";
 
 export function App() {
   return (
-    <BrowserRouter basename="/agile-talent-solutions/">
+    <BrowserRouter basename="/AgileTalentSolutions/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

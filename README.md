@@ -67,9 +67,11 @@ http://localhost:5173
 ### Root рівень
 - `npm install` - Встановити всі залежності
 - `npm run dev` - Запустити фронтенд в режимі розробки
-- `npm run server` - Запустити бекенд сервер
+- `npm run server` - Запустити бекенд сервер (компіляція + запуск)
 - `npm run server:dev` - Запустити бекенд з автоперезавантаженням
+- `npm run server:dev:ts` - Запустити бекенд через ts-node (для розробки)
 - `npm run build` - Збілдити фронтенд для продакшену
+- `npm run build:server` - Збілдити бекенд
 
 ### Клієнт (/client)
 - `npm run dev` - Vite dev server
@@ -77,8 +79,10 @@ http://localhost:5173
 - `npm run lint` - ESLint перевірка
 
 ### Сервер (/server)
-- `npm run start` - Запуск сервера
+- `npm run start` - Компіляція + запуск сервера (для продакшену)
 - `npm run dev` - Nodemon з автоперезавантаженням
+- `npm run dev:ts` - ts-node для розробки
+- `npm run build` - Компіляція TypeScript
 
 ## API Документація
 
@@ -141,27 +145,43 @@ http://localhost:5173
 - **User Cards**: Сітка профілів у результатах пошуку
 - **Profile**: Детальна сторінка профілю
 
-## Технології
+## Технології та Пакети
 
-### Frontend
-- **React 19** - UI бібліотека
-- **TypeScript** - Типізація
-- **Tailwind CSS** - Стилізація
-- **Framer Motion** - Анімації
-- **React Router** - Маршрутизація
-- **Zustand** - Управління станом
-- **Zod** - Валідація даних
+### Frontend (`client/package.json`)
+**Основні залежності:**
+- **React 19.1.1** - UI бібліотека
+- **React DOM 19.1.1** - DOM рендеринг
+- **TypeScript 5.8.3** - Типізація
+- **Tailwind CSS 4.1.13** - Стилізація з Vite плагіном
+- **Framer Motion 12.23.22** - Анімації та переходи
+- **React Router DOM 7.9.3** - Маршрутизація SPA
+- **Zustand 5.0.8** - Управління станом
+- **Zod 4.1.11** - Валідація даних
 
-### Backend
+**Інструменти розробки:**
+- **Vite 7.1.7** - Bundler та dev server
+- **ESLint 9.36.0** - Лінтинг коду
+- **TypeScript ESLint 8.44.0** - TypeScript правила
+- **@vitejs/plugin-react-swc 4.1.0** - React підтримка
+
+### Backend (`server/package.json`)
+**Основні залежності:**
+- **Express 5.1.0** - Web framework
+- **TypeScript 5.9.2** - Типізація
+- **CORS 2.8.5** - Cross-origin запити
+- **Zod 4.1.11** - Валідація API
+
+**Інструменти розробки:**
+- **Nodemon 3.1.10** - Автоперезавантаження сервера
+- **ts-node 10.9.2** - TypeScript виконання
+- **cpx 1.5.0** - Копіювання файлів при збірці
+- **@types/express 5.0.3** - TypeScript типи для Express
+- **@types/cors 2.8.19** - TypeScript типи для CORS
+- **@types/node 24.6.0** - Node.js типи
+
+### Системні вимоги
 - **Node.js 18+** - Серверне середовище
-- **Express 5** - Web framework
-- **TypeScript** - Типізація
-- **CORS** - Cross-origin запити
-- **Zod** - Валідація API
-
-### Інструменти розробки
-- **Vite** - Bundler та dev server
-- **Nodemon** - Автоперезавантаження сервера
+- **npm 8+** - Пакетний менеджер
 
 ## Чеклист відповідності ТЗ
 
@@ -174,9 +194,3 @@ http://localhost:5173
 - [x] Активне підсвічування поточної сторінки
 - [x] Клавіатурна навігація та доступність
 - [x] Адаптивна сітка 1→2→3 колонки
-
-## Маршрути
-
-- `/` - Головна сторінка
-- `/search` - Сторінка пошуку
-- `/profile/:id` - Деталі профілю (де :id це ID профілю)

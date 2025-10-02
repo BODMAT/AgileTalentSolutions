@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import profilesRoutes from './routes/profiles.ts';
+import profilesRoutes from './routes/profiles.js';
 
 const app = express();
 const PORT = 4000;
